@@ -17,7 +17,7 @@ namespace FinalProject.PageObjects
         private By byInputPostalCode;
         private By byInputCountry;
         private By byInputMobilePhone;
-        private By byRegisterButton;
+        private By byRegisterButton;        
 
         public CreateAccountPO(IWebDriver driver)
         {
@@ -33,7 +33,7 @@ namespace FinalProject.PageObjects
             byInputPostalCode = By.Id("postcode");
             byInputCountry = By.Id("id_country");
             byInputMobilePhone = By.Id("phone_mobile");
-            byRegisterButton = By.Id("submitAccount");
+            byRegisterButton = By.Id("submitAccount");            
         }
 
         public void InsertFirstName(string firstName)
@@ -94,6 +94,6 @@ namespace FinalProject.PageObjects
         public void ClickRegisterButton()
         {
             _driver.FindElement(byRegisterButton).Click();
-        }
+        }       
     }
 }

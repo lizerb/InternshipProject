@@ -4,29 +4,32 @@ using FinalProject.PageObjects;
 using TechTalk.SpecFlow;
 using FluentAssertions;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
+using System;
+using System.Threading;
 
 namespace FinalProject.StepDefinitions
 {
     [Binding]
     public class UserRegistrationSteps
-    {
-        private readonly Context _context;
+    {        
         private static IWebDriver _driver;
+        private readonly HomePO homePO;
+        private readonly LoginPO loginPO;
+        private readonly CreateAccountPO createAccountPO;
 
         public UserRegistrationSteps(Context context)
-        {
-            _context = context;
+        {            
             _driver = context.Driver;
-        }
-
-        private readonly HomePO homePO = new HomePO(_driver);
-        private readonly LoginPO loginPO = new LoginPO(_driver);
-        private readonly CreateAccountPO createAccountPO = new CreateAccountPO(_driver);
+            homePO = new HomePO(_driver);
+            loginPO = new LoginPO(_driver);
+            createAccountPO = new CreateAccountPO(_driver);
+        }               
 
         [Given(@"that I am a customer without registration")]
         public void GivenThatIAmACustomerWithoutRegistration()
         {
-            homePO.Visit();
+            homePO.Visit();            
         }
         
         [When(@"I click Sign in button")]
@@ -38,7 +41,7 @@ namespace FinalProject.StepDefinitions
         [When(@"I fill the e-mail text box")]
         public void WhenIFillTheE_MailTextBox()
         {
-            loginPO.InsertEmail("lize@hotmail.com");
+            loginPO.InsertEmail("janedoe@hotmail.com");
         }
         
         [When(@"I click the Create an Account button")]
@@ -52,9 +55,7 @@ namespace FinalProject.StepDefinitions
         {
             createAccountPO.InsertFirstName("Jane");
             createAccountPO.InsertLastName("Doe");
-            createAccountPO.InsertPassword("12345");
-            //createAccountPO.InsertFirstNameAddress("");
-            //createAccountPO.InsertLastNameAddress("");
+            createAccountPO.InsertPassword("12345");            
             createAccountPO.InsertAddress("Columbus street");
             createAccountPO.InsertCity("Montgomery");
             createAccountPO.InsertState("Alabama");
@@ -78,7 +79,15 @@ namespace FinalProject.StepDefinitions
         [When(@"I don't fill at least one of the mandatory fields of the registration form")]
         public void WhenIDonTFillAtLeastOneOfTheMandatoryFieldsOfTheRegistrationForm()
         {
-            
+            createAccountPO.InsertFirstName("Jane");
+            createAccountPO.InsertLastName("Doe");
+            createAccountPO.InsertPassword("12345");            
+            createAccountPO.InsertAddress("Columbus street");
+            createAccountPO.InsertCity("Montgomery");
+            createAccountPO.InsertState("Alabama");
+            createAccountPO.InsertPostalCode("90540");
+            createAccountPO.InsertCountry("United States");
+            // didn't insert mobile phone field
         }
         
         [Then(@"I will be redirected to the login page")]
@@ -90,21 +99,24 @@ namespace FinalProject.StepDefinitions
         
         [Then(@"I will be redirected to the registration page")]
         public void ThenIWillBeRedirectedToTheRegistrationPage()
-        {
-            StringAssert.Contains(_driver.Url, "account-creation");
-            StringAssert.Contains(_driver.PageSource, "Create an account");
+        {            
+            StringAssert.Contains(_driver.PageSource.ToLower(), "create an account".ToLower());
         }
         
         [Then(@"I should be able to finish my registration in the online store")]
         public void ThenIShouldBeAbleToFinishMyRegistrationInTheOnlineStore()
         {
-           // Welcome to your account. Here you can manage all of your personal information and orders.
+            StringAssert.Contains(_driver.Url, "controller=my-account");
+            StringAssert.Contains(_driver.PageSource, 
+                "Welcome to your account. Here you can manage all of your personal information and orders.");            
         }
         
         [Then(@"a message must be shown saying that all the mandatory fields must be informed")]
         public void ThenAMessageMustBeShownSayingThatAllTheMandatoryFieldsMustBeInformed()
         {
-            ScenarioContext.Current.Pending();
+            var wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(10));
+            var displayed = wait.Until(drv => drv.FindElement(By.ClassName("alert alert-danger")));
+            StringAssert.Contains(_driver.PageSource, "There is 1 error");            
         }
     }
 }

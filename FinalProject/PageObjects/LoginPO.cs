@@ -11,7 +11,7 @@ namespace FinalProject.PageObjects
 
         public LoginPO(IWebDriver driver)
         {
-            this._driver = driver;
+            _driver = driver;
             byInputEmail = By.Id("email_create");
             byCreateAccountButton = By.Id("SubmitCreate");
         }

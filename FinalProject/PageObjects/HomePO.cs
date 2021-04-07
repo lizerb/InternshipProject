@@ -9,7 +9,7 @@ namespace FinalProject.PageObjects
 
         public HomePO(IWebDriver driver)
         {
-            this._driver = driver;
+            _driver = driver;
             bySignInButton = By.ClassName("login");
         }
 
