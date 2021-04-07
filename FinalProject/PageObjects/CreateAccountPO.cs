@@ -73,7 +73,7 @@ namespace FinalProject.PageObjects
 
         public void InsertState(string state)   // select
         {
-
+            _driver.FindElement(byInputState).SendKeys(state);
         }
 
         public void InsertPostalCode(string postalCode)
@@ -83,7 +83,7 @@ namespace FinalProject.PageObjects
 
         public void InsertCountry(string country)  // select
         {
-
+            _driver.FindElement(byInputCountry).SendKeys(country);
         }
 
         public void InsertMobilePhone(string mobilePhone)

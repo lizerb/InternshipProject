@@ -1,4 +1,5 @@
-﻿using FinalProject.Hooks;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using FinalProject.Hooks;
 using FinalProject.PageObjects;
 using TechTalk.SpecFlow;
 using FluentAssertions;
@@ -20,7 +21,7 @@ namespace FinalProject.StepDefinitions
 
         private readonly HomePO homePO = new HomePO(_driver);
         private readonly LoginPO loginPO = new LoginPO(_driver);
-        private readonly CreateAccountPO = new CreateAccountPO(_driver);
+        private readonly CreateAccountPO createAccountPO = new CreateAccountPO(_driver);
 
         [Given(@"that I am a customer without registration")]
         public void GivenThatIAmACustomerWithoutRegistration()
@@ -49,37 +50,55 @@ namespace FinalProject.StepDefinitions
         [When(@"I insert all the mandatory data")]
         public void WhenIInsertAllTheMandatoryData()
         {
-            ScenarioContext.Current.Pending();
+            createAccountPO.InsertFirstName("Jane");
+            createAccountPO.InsertLastName("Doe");
+            createAccountPO.InsertPassword("12345");
+            //createAccountPO.InsertFirstNameAddress("");
+            //createAccountPO.InsertLastNameAddress("");
+            createAccountPO.InsertAddress("Columbus street");
+            createAccountPO.InsertCity("Montgomery");
+            createAccountPO.InsertState("Alabama");
+            createAccountPO.InsertPostalCode("90540");
+            createAccountPO.InsertCountry("United States");
+            createAccountPO.InsertMobilePhone("98765432");
         }
-        
+
+        [When(@"I click Register button")]
+        public void WhenIClickRegisterButton()
+        {
+            createAccountPO.ClickRegisterButton();
+        }
+
         [When(@"I access the Sign in page")]
         public void WhenIAccessTheSignInPage()
         {
-            ScenarioContext.Current.Pending();
+            homePO.ClickSignInButton();
         }
         
         [When(@"I don't fill at least one of the mandatory fields of the registration form")]
         public void WhenIDonTFillAtLeastOneOfTheMandatoryFieldsOfTheRegistrationForm()
         {
-            ScenarioContext.Current.Pending();
+            
         }
         
         [Then(@"I will be redirected to the login page")]
         public void ThenIWillBeRedirectedToTheLoginPage()
         {
-            ScenarioContext.Current.Pending();
+            StringAssert.Contains(_driver.Url, "my-account");
+            StringAssert.Contains(_driver.PageSource, "Authentication");
         }
         
         [Then(@"I will be redirected to the registration page")]
         public void ThenIWillBeRedirectedToTheRegistrationPage()
         {
-            ScenarioContext.Current.Pending();
+            StringAssert.Contains(_driver.Url, "account-creation");
+            StringAssert.Contains(_driver.PageSource, "Create an account");
         }
         
         [Then(@"I should be able to finish my registration in the online store")]
         public void ThenIShouldBeAbleToFinishMyRegistrationInTheOnlineStore()
         {
-            ScenarioContext.Current.Pending();
+           // Welcome to your account. Here you can manage all of your personal information and orders.
         }
         
         [Then(@"a message must be shown saying that all the mandatory fields must be informed")]
