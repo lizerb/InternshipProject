@@ -4,7 +4,7 @@ namespace FinalProject.PageObjects
 {
     public class LoginPO
     {
-        private IWebDriver _driver;
+        private readonly IWebDriver _driver;
 
         private By byInputEmail;
         private By byCreateAccountButton;

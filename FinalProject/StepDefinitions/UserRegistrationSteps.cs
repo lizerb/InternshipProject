@@ -2,11 +2,9 @@
 using FinalProject.Hooks;
 using FinalProject.PageObjects;
 using TechTalk.SpecFlow;
-using FluentAssertions;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
-using System.Threading;
 
 namespace FinalProject.StepDefinitions
 {
@@ -41,7 +39,7 @@ namespace FinalProject.StepDefinitions
         [When(@"I fill the e-mail text box")]
         public void WhenIFillTheE_MailTextBox()
         {
-            loginPO.InsertEmail("janedoe@hotmail.com");
+            loginPO.InsertEmail($"{Guid.NewGuid()}@hotmail.com");
         }
         
         [When(@"I click the Create an Account button")]
@@ -115,7 +113,7 @@ namespace FinalProject.StepDefinitions
         public void ThenAMessageMustBeShownSayingThatAllTheMandatoryFieldsMustBeInformed()
         {
             var wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(10));
-            var displayed = wait.Until(drv => drv.FindElement(By.ClassName("alert alert-danger")));
+            var displayed = wait.Until(drv => drv.FindElement(By.XPath("//div[@class='alert alert-danger']")));
             StringAssert.Contains(_driver.PageSource, "There is 1 error");            
         }
     }

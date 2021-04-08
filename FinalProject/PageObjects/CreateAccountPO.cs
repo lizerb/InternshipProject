@@ -4,7 +4,7 @@ namespace FinalProject.PageObjects
 {
     public class CreateAccountPO
     {
-        private IWebDriver _driver;
+        private readonly IWebDriver _driver;
 
         private By byInputFirstName;
         private By byInputLastName;

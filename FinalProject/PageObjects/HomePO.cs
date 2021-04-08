@@ -4,7 +4,7 @@ namespace FinalProject.PageObjects
 {
     public class HomePO
     {
-        private IWebDriver _driver;
+        private readonly IWebDriver _driver;
         private By bySignInButton;
 
         public HomePO(IWebDriver driver)
