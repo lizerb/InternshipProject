@@ -39,7 +39,7 @@ namespace FinalProject.StepDefinitions
         [When(@"I fill the e-mail text box")]
         public void WhenIFillTheE_MailTextBox()
         {
-            loginPO.InsertEmail($"{Guid.NewGuid()}@hotmail.com");
+            loginPO.InsertEmailCreate($"{Guid.NewGuid()}@hotmail.com");
         }
         
         [When(@"I click the Create an Account button")]
