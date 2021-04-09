@@ -4,6 +4,7 @@ using FinalProject.PageObjects;
 using OpenQA.Selenium;
 using System;
 using TechTalk.SpecFlow;
+using OpenQA.Selenium.Support.UI;
 
 namespace FinalProject.StepDefinitions
 {
@@ -71,11 +72,21 @@ namespace FinalProject.StepDefinitions
             StringAssert.Contains(_driver.PageSource,
                 "Welcome to your account. Here you can manage all of your personal information and orders.");
         }
-        
-        [Then(@"an error message must be shown")]
-        public void ThenAnErrorMessageMustBeShown()
+
+        [Then(@"an error message must be shown informing that the authentication failed")]
+        public void ThenAnErrorMessageMustBeShownInformingThatTheAuthenticationFailed()
         {
-            ScenarioContext.Current.Pending();
+            var wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(10));
+            var displayed = wait.Until(drv => drv.FindElement(By.CssSelector("div.alert-danger")));
+            StringAssert.Contains(_driver.PageSource.ToLower(), "Authentication failed.".ToLower());
+        }
+
+        [Then(@"an error message must be shown informing that an email is required")]
+        public void ThenAnErrorMessageMustBeShownInformingThatAnEmailIsRequired()
+        {
+            var wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(10));
+            var displayed = wait.Until(drv => drv.FindElement(By.CssSelector("div.alert-danger")));
+            StringAssert.Contains(_driver.PageSource.ToLower(), "An email address required.".ToLower());             
         }
     }
 }

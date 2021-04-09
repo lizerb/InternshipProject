@@ -18,7 +18,7 @@ Scenario: Unsuccessful login - wrong password
 	And I fill in the e-mail field with a registered e-mail
 	And I fill in the password field with an incorrect password
 	And I click in the Sign in button at Login page
-	Then an error message must be shown 
+	Then an error message must be shown informing that the authentication failed
 
 Scenario: Unsuccessful login - wrong email
 	Given that I am a customer who already has an account
@@ -26,10 +26,10 @@ Scenario: Unsuccessful login - wrong email
 	And I fill in the e-mail field with an unregistered e-mail
 	And I fill in the password field with the correct password
 	And I click in the Sign in button at Login page
-	Then an error message must be shown
-	//there is 1 error authentication failed
+	Then an error message must be shown informing that the authentication failed
+	
 Scenario: Unsuccessful login - without register information
 	Given that I am a customer who already has an account	
 	When I click in the Sign in button at Home page 
 	And I click in the Sign in button at Login page
-	Then an error message must be shown
+	Then an error message must be shown informing that an email is required

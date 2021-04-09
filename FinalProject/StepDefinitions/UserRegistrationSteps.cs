@@ -113,7 +113,7 @@ namespace FinalProject.StepDefinitions
         public void ThenAMessageMustBeShownSayingThatAllTheMandatoryFieldsMustBeInformed()
         {
             var wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(10));
-            var displayed = wait.Until(drv => drv.FindElement(By.XPath("//div[@class='alert alert-danger']")));
+            var displayed = wait.Until(drv => drv.FindElement(By.CssSelector("div.alert-danger")));
             StringAssert.Contains(_driver.PageSource, "There is 1 error");            
         }
     }

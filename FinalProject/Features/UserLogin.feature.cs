@@ -188,20 +188,20 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.And("I click in the Sign in button at Login page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 21
- testRunner.Then("an error message must be shown", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("an error message must be shown informing that the authentication failed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Unsuccessful login - wrong e-mail")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Unsuccessful login - wrong email")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "UserLogin")]
-        public virtual void UnsuccessfulLogin_WrongE_Mail()
+        public virtual void UnsuccessfulLogin_WrongEmail()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Unsuccessful login - wrong e-mail", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Unsuccessful login - wrong email", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 23
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -238,7 +238,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.And("I click in the Sign in button at Login page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 29
- testRunner.Then("an error message must be shown", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("an error message must be shown informing that the authentication failed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -282,7 +282,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.And("I click in the Sign in button at Login page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 35
- testRunner.Then("an error message must be shown", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("an error message must be shown informing that an email is required", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
