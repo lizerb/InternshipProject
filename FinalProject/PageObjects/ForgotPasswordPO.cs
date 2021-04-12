@@ -10,9 +10,9 @@ namespace FinalProject.PageObjects
         private By byInputEmail;
         private By byRetrievePasswordButton;
 
-        public ForgotPasswordPO(Context context)
+        public ForgotPasswordPO(IWebDriver driver)
         {
-            _driver = context.Driver;
+            _driver = driver;
             byInputEmail = By.Id("email");
             byRetrievePasswordButton = By.CssSelector("button.button-medium");
         }

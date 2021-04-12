@@ -11,7 +11,8 @@ namespace FinalProject.StepDefinitions
     [Binding]
     public class UserRegistrationSteps
     {        
-        private static IWebDriver _driver;
+        private readonly IWebDriver _driver;
+
         private readonly HomePO homePO;
         private readonly LoginPO loginPO;
         private readonly CreateAccountPO createAccountPO;
