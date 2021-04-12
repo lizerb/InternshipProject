@@ -11,6 +11,7 @@ namespace FinalProject.PageObjects
         private By byInputPassword;
         private By byCreateAccountButton;
         private By bySignInButton;
+        private By byForgotPasswordLink;
 
         public LoginPO(IWebDriver driver)
         {
@@ -20,6 +21,7 @@ namespace FinalProject.PageObjects
             byInputPassword = By.Id("passwd");
             byCreateAccountButton = By.Id("SubmitCreate");
             bySignInButton = By.Id("SubmitLogin");
+            byForgotPasswordLink = By.CssSelector("div>p.lost_password.form-group>a");
         }
 
         public void InsertEmailCreate(string email)
@@ -45,6 +47,11 @@ namespace FinalProject.PageObjects
         public void ClickSignInButton()
         {
             _driver.FindElement(bySignInButton).Click();
+        }
+
+        public void ClickForgotPassword()
+        {
+            _driver.FindElement(byForgotPasswordLink).Click();
         }
     }
 }
