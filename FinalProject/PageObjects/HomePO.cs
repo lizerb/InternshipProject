@@ -27,9 +27,9 @@ namespace FinalProject.PageObjects
             _driver.FindElement(bySignInButton).Click();
         }
 
-        public void InsertItemToSearch(string item)
+        public void InsertProductToSearch(string product)
         {
-            _driver.FindElement(bySearchInput).SendKeys(item);
+            _driver.FindElement(bySearchInput).SendKeys(product);
         }
         
         public void ClickSearchButton()
