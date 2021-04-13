@@ -103,6 +103,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Features\ForgotPassword.feature" />
+    <None Include="Features\Search.feature" />
     <None Include="Features\UserLogin.feature" />
     <None Include="Features\UserRegistration.feature" />
     <None Include="packages.config" />

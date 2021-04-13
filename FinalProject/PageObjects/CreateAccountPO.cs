@@ -6,89 +6,89 @@ namespace FinalProject.PageObjects
     {
         private readonly IWebDriver _driver;
 
-        private By byInputFirstName;
-        private By byInputLastName;
-        private By byInputPassword;
-        private By byInputFirstNameAddress;
-        private By byInputLastNameAddress;
-        private By byInputAddress;
-        private By byInputCity;
-        private By byInputState;
-        private By byInputPostalCode;
-        private By byInputCountry;
-        private By byInputMobilePhone;
+        private By byFirstNameInput;
+        private By byLastNameInput;
+        private By byPasswordInput;
+        private By byFirstNameAddressInput;
+        private By byLastNameAddressInput;
+        private By byAddressInput;
+        private By byCityInput;
+        private By byStateInput;
+        private By byPostalCodeInput;
+        private By byCountryInput;
+        private By byMobilePhoneInput;
         private By byRegisterButton;        
 
         public CreateAccountPO(IWebDriver driver)
         {
             _driver = driver;
-            byInputFirstName = By.Id("customer_firstname");
-            byInputLastName = By.Id("customer_lastname");
-            byInputPassword = By.Id("passwd");
-            byInputFirstNameAddress = By.Id("firstname");
-            byInputLastNameAddress = By.Id("lastname");
-            byInputAddress = By.Id("address1");
-            byInputCity = By.Id("city");
-            byInputState = By.Id("id_state");
-            byInputPostalCode = By.Id("postcode");
-            byInputCountry = By.Id("id_country");
-            byInputMobilePhone = By.Id("phone_mobile");
+            byFirstNameInput = By.Id("customer_firstname");
+            byLastNameInput = By.Id("customer_lastname");
+            byPasswordInput = By.Id("passwd");
+            byFirstNameAddressInput = By.Id("firstname");
+            byLastNameAddressInput = By.Id("lastname");
+            byAddressInput = By.Id("address1");
+            byCityInput = By.Id("city");
+            byStateInput = By.Id("id_state");
+            byPostalCodeInput = By.Id("postcode");
+            byCountryInput = By.Id("id_country");
+            byMobilePhoneInput = By.Id("phone_mobile");
             byRegisterButton = By.Id("submitAccount");            
         }
 
         public void InsertFirstName(string firstName)
         {
-            _driver.FindElement(byInputFirstName).SendKeys(firstName);
+            _driver.FindElement(byFirstNameInput).SendKeys(firstName);
         }
 
         public void InsertLastName(string lastName)
         {
-            _driver.FindElement(byInputLastName).SendKeys(lastName);
+            _driver.FindElement(byLastNameInput).SendKeys(lastName);
         }
 
         public void InsertPassword(string password)
         {
-            _driver.FindElement(byInputPassword).SendKeys(password);
+            _driver.FindElement(byPasswordInput).SendKeys(password);
         }
 
         public void InsertFirstNameAddress(string firstNameAddress)
         {
-            _driver.FindElement(byInputFirstNameAddress).SendKeys(firstNameAddress);
+            _driver.FindElement(byFirstNameAddressInput).SendKeys(firstNameAddress);
         }
 
         public void InsertLastNameAddress(string lastNameAddress)
         {
-            _driver.FindElement(byInputLastNameAddress).SendKeys(lastNameAddress);
+            _driver.FindElement(byLastNameAddressInput).SendKeys(lastNameAddress);
         }
 
         public void InsertAddress(string address)
         {
-            _driver.FindElement(byInputAddress).SendKeys(address);
+            _driver.FindElement(byAddressInput).SendKeys(address);
         }
 
         public void InsertCity(string city)
         {
-            _driver.FindElement(byInputCity).SendKeys(city);
+            _driver.FindElement(byCityInput).SendKeys(city);
         }
 
         public void InsertState(string state)   // select
         {
-            _driver.FindElement(byInputState).SendKeys(state);
+            _driver.FindElement(byStateInput).SendKeys(state);
         }
 
         public void InsertPostalCode(string postalCode)
         {
-            _driver.FindElement(byInputPostalCode).SendKeys(postalCode);
+            _driver.FindElement(byPostalCodeInput).SendKeys(postalCode);
         }
 
         public void InsertCountry(string country)  // select
         {
-            _driver.FindElement(byInputCountry).SendKeys(country);
+            _driver.FindElement(byCountryInput).SendKeys(country);
         }
 
         public void InsertMobilePhone(string mobilePhone)
         {
-            _driver.FindElement(byInputMobilePhone).SendKeys(mobilePhone);
+            _driver.FindElement(byMobilePhoneInput).SendKeys(mobilePhone);
         }
 
         public void ClickRegisterButton()

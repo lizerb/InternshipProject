@@ -7,19 +7,19 @@ namespace FinalProject.PageObjects
     {
         private IWebDriver _driver;
 
-        private By byInputEmail;
+        private By byEmailInput;
         private By byRetrievePasswordButton;
 
         public ForgotPasswordPO(IWebDriver driver)
         {
             _driver = driver;
-            byInputEmail = By.Id("email");
+            byEmailInput = By.Id("email");
             byRetrievePasswordButton = By.CssSelector("button.button-medium");
         }
 
         public void InsertEmail(string email)
         {
-            _driver.FindElement(byInputEmail).SendKeys(email);
+            _driver.FindElement(byEmailInput).SendKeys(email);
         }
 
         public void ClickRetrievePasswordButton()
