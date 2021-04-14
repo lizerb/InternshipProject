@@ -1,10 +1,9 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using FinalProject.Hooks;
+﻿using FinalProject.Hooks;
 using FinalProject.PageObjects;
 using OpenQA.Selenium;
 using System;
 using TechTalk.SpecFlow;
-using OpenQA.Selenium.Support.UI;
+using FluentAssertions;
 
 namespace FinalProject.StepDefinitions
 {
@@ -28,65 +27,33 @@ namespace FinalProject.StepDefinitions
         {
             homePO.Visit();
         }
-        
-        [When(@"I click in the Sign in button at Home page")]
-        public void WhenIClickInTheSignInButtonAtHomePage()
+
+        [When(@"I access the Sign In page")]
+        public void WhenIAccessTheSignInPage()
         {
             homePO.ClickSignInButton();
         }
-        
-        [When(@"I fill in the e-mail field with a registered e-mail")]
-        public void WhenIFillInTheE_MailFieldWithARegisteredE_Mail()
+
+        [When(@"I inform the email ""(.*)"" and the password ""(.*)""")]
+        public void WhenIInformTheEmailAndThePassword(string email, string password)
         {
-            loginPO.InsertEmail("janedoe@hotmail.com");
-        }
-        
-        [When(@"I fill in the password field with the correct password")]
-        public void WhenIFillInThePasswordFieldWithTheCorrectPassword()
-        {
-            loginPO.InsertPassword("12345");
-        }
-        
-        [When(@"I click in the Sign in button at Login page")]
-        public void WhenIClickInTheSignInButtonAtLoginPage()
-        {
+            loginPO.InsertEmail(email);
+            loginPO.InsertPassword(password);
             loginPO.ClickSignInButton();
         }
         
-        [When(@"I fill in the password field with an incorrect password")]
-        public void WhenIFillInThePasswordFieldWithAnIncorrectPassword()
+        [When(@"I try to log in without register information")]
+        public void WhenITryToLogInWithoutRegisterInformation()
         {
-            loginPO.InsertPassword("12346");
-        }
-        
-        [When(@"I fill in the e-mail field with an unregistered e-mail")]
-        public void WhenIFillInTheE_MailFieldWithAnUnregisteredE_Mail()
-        {
-            loginPO.InsertEmail("unregistered@hotmail.com");
+            loginPO.ClickSignInButton();
         }
         
         [Then(@"I will be redirected to the My Account page")]
         public void ThenIWillBeRedirectedToTheMyAccountPage()
         {
-            StringAssert.Contains(_driver.Url, "controller=my-account");
-            StringAssert.Contains(_driver.PageSource,
-                "Welcome to your account. Here you can manage all of your personal information and orders.");
-        }
-
-        [Then(@"an error message must be shown informing that the authentication failed")]
-        public void ThenAnErrorMessageMustBeShownInformingThatTheAuthenticationFailed()
-        {
-            var wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(10));
-            var displayed = wait.Until(drv => drv.FindElement(By.CssSelector("div.alert-danger")));
-            StringAssert.Contains(_driver.PageSource.ToLower(), "Authentication failed.".ToLower());
-        }
-
-        [Then(@"an error message must be shown informing that an email is required")]
-        public void ThenAnErrorMessageMustBeShownInformingThatAnEmailIsRequired()
-        {
-            var wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(10));
-            var displayed = wait.Until(drv => drv.FindElement(By.CssSelector("div.alert-danger")));
-            StringAssert.Contains(_driver.PageSource.ToLower(), "An email address required.".ToLower());             
+            _driver.Url.Should().Contain("controller=my-account");
+            _driver.PageSource.Should().Contain(
+                "Welcome to your account. Here you can manage all of your personal information and orders");            
         }
     }
 }

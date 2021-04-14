@@ -10,7 +10,7 @@ namespace FinalProject.StepDefinitions
     public class SearchSteps
     {
         private IWebDriver _driver;
-        private HomePO homePO;
+        private readonly HomePO homePO;
 
         public SearchSteps(Context context)
         {
