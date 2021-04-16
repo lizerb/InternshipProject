@@ -95,6 +95,8 @@
     <Compile Include="PageObjects\ForgotPasswordPO.cs" />
     <Compile Include="PageObjects\HomePO.cs" />
     <Compile Include="PageObjects\LoginPO.cs" />
+    <Compile Include="PageObjects\WomenCategoryPO.cs" />
+    <Compile Include="StepDefinitions\FilterProductsSteps.cs" />
     <Compile Include="StepDefinitions\ForgotPasswordSteps.cs" />
     <Compile Include="StepDefinitions\SearchSteps.cs" />
     <Compile Include="StepDefinitions\UserLoginSteps.cs" />
@@ -103,6 +105,7 @@
     <Compile Include="Helpers\TestHelper.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Features\FilterProducts.feature" />
     <None Include="Features\ForgotPassword.feature" />
     <None Include="Features\Search.feature" />
     <None Include="Features\UserLogin.feature" />

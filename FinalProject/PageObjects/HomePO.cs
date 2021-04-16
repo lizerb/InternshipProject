@@ -8,6 +8,7 @@ namespace FinalProject.PageObjects
         private By bySignInButton;
         private By bySearchInput;
         private By bySearchButton;
+        private By byWomenButton;
 
         public HomePO(IWebDriver driver)
         {
@@ -15,6 +16,7 @@ namespace FinalProject.PageObjects
             bySignInButton = By.ClassName("login");
             bySearchInput = By.Id("search_query_top");
             bySearchButton = By.Name("submit_search");
+            byWomenButton = By.CssSelector("ul>li:nth-child(1)>a"); 
         }
 
         public void Visit()
@@ -35,6 +37,11 @@ namespace FinalProject.PageObjects
         public void ClickSearchButton()
         {
             _driver.FindElement(bySearchButton).Click();
+        }
+
+        public void ClickWomenButton()
+        {
+            _driver.FindElement(byWomenButton).Click();
         }
     }
 }
