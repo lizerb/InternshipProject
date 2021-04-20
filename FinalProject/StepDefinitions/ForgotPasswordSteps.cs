@@ -40,27 +40,13 @@ namespace FinalProject.StepDefinitions
         {
             loginPO.ClickForgotPassword();
         }
-        
-        [When(@"I inform my registered email")]
-        public void WhenIInformMyRegisteredEmail()
+
+        [When(@"I inform the email ""(.*)""")]
+        public void WhenIInformTheEmail(string email)
         {
-            forgotPasswordPO.InsertEmail("janedoe@hotmail.com");
+            forgotPasswordPO.InsertEmail(email);
             forgotPasswordPO.ClickRetrievePasswordButton();
-        }
-        
-        [When(@"I inform an email that is not registered in the website")]
-        public void WhenIInformAnEmailThatIsNotRegisteredInTheWebsite()
-        {
-            forgotPasswordPO.InsertEmail("unregistered@hotmail.com");
-            forgotPasswordPO.ClickRetrievePasswordButton();
-        }
-        
-        [When(@"I inform an invalid email")]
-        public void WhenIInformAnInvalidEmail()
-        {
-            forgotPasswordPO.InsertEmail("invalidemail");
-            forgotPasswordPO.ClickRetrievePasswordButton();
-        }
+        }        
         
         [Then(@"the message ""(.*)"" is shown")]
         public void ThenTheMessageIsShown(string message)

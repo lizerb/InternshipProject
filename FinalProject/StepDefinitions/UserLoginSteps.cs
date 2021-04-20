@@ -1,7 +1,6 @@
 ﻿using FinalProject.Hooks;
 using FinalProject.PageObjects;
 using OpenQA.Selenium;
-using System;
 using TechTalk.SpecFlow;
 using FluentAssertions;
 
@@ -34,20 +33,14 @@ namespace FinalProject.StepDefinitions
             homePO.ClickSignInButton();
         }
 
-        [When(@"I inform the email ""(.*)"" and the password ""(.*)""")]
+        [When(@"I inform the email and the password ""(.*)"" ""(.*)""")]
         public void WhenIInformTheEmailAndThePassword(string email, string password)
         {
             loginPO.InsertEmail(email);
             loginPO.InsertPassword(password);
             loginPO.ClickSignInButton();
-        }
-        
-        [When(@"I try to log in without register information")]
-        public void WhenITryToLogInWithoutRegisterInformation()
-        {
-            loginPO.ClickSignInButton();
-        }
-        
+        }            
+              
         [Then(@"I will be redirected to the My Account page")]
         public void ThenIWillBeRedirectedToTheMyAccountPage()
         {

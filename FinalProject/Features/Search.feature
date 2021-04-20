@@ -9,12 +9,12 @@ Scenario: Successful search
 	When I search for "blouse"
 	Then I will be redirected to the results page
 
-Scenario: Unsuccessful search - product does not exist
+Scenario Outline: Unsuccessful search 
 	Given that I am a customer browsing in the website	
-	When I search for "#@$#@$"
-	Then the the message "No results were found for your search" is shown
+	When I search for "<Product>"
+	Then the the message "<Message>" is shown
+	Examples: 
+	| Test case              | Product | Message                               |
+	| Product does not exist | #@$#@$  | No results were found for your search |
+	| Empty search           |         | Please enter a search keyword         |
 
-Scenario: Unsuccessful search - empty search
-	Given that I am a customer browsing in the website	
-	When I search for ""
-	Then the the message "Please enter a search keyword" is shown
