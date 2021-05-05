@@ -96,6 +96,7 @@
     <Compile Include="PageObjects\HomePO.cs" />
     <Compile Include="PageObjects\LoginPO.cs" />
     <Compile Include="PageObjects\WomenCategoryPO.cs" />
+    <Compile Include="Screenshot\Screenshots.cs" />
     <Compile Include="StepDefinitions\FilterProductsSteps.cs" />
     <Compile Include="StepDefinitions\ForgotPasswordSteps.cs" />
     <Compile Include="StepDefinitions\SearchSteps.cs" />

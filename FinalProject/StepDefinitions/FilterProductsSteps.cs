@@ -4,6 +4,7 @@ using FluentAssertions;
 using OpenQA.Selenium;
 using System.Threading;
 using TechTalk.SpecFlow;
+using FinalProject.Screenshot;
 
 namespace FinalProject.StepDefinitions
 {
@@ -11,15 +12,16 @@ namespace FinalProject.StepDefinitions
     public class FilterProductsSteps
     {
         private readonly IWebDriver _driver;
-
+        private Screenshots _screenshots;
         private readonly HomePO homePO;
         private readonly WomenCategoryPO womenCategoryPO;
 
         public FilterProductsSteps(Context context)
         {
             _driver = context.Driver;
+            _screenshots = new Screenshots(_driver);
             homePO = new HomePO(_driver);
-            womenCategoryPO = new WomenCategoryPO(_driver);
+            womenCategoryPO = new WomenCategoryPO(_driver);            
         }
 
         [Given(@"that I am a user at Home page")]
@@ -46,6 +48,7 @@ namespace FinalProject.StepDefinitions
         {
             womenCategoryPO.FilterBy(filter);
             Thread.Sleep(7000);        // in order to see if the correct filter was selected
+            _screenshots.ToImage();
         }
         
         [Then(@"I will be redirected to the Women category page")]
